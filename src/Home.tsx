@@ -3,7 +3,8 @@ import Create from "./Create";
 import axios from "axios";
 import { Circle, CircleCheckBig } from "lucide-react";
 import Delete from "./Delete";
-import Getcomplete from "./Getcomplete";
+import Complete from "./Complete";
+import Incomplete from "./Incomplete";
 
 const Home = () => {
   const [todolists, setTodolists] = useState<any>();
@@ -48,8 +49,20 @@ const Home = () => {
       <div className="bg-gray-100 h-screen w-screen ">
         <div className="flex flex-col justify-center items-center ">
           <h2 className="font-bold text-2xl">ToDo List</h2>
+          {/* create */}
           <Create />
-          <Getcomplete setTodolists={setTodolists} />
+          {/* complete and incomplete */}
+          <div className="flex justify-end w-80 mt-5 gap-5">
+            <Complete setTodolists={setTodolists} />
+            <Incomplete setTodolists={setTodolists} />
+            <button
+              onClick={fetchTodos}
+              className="p-2 bg-blue-600 text-white rounded-md cursor-pointer "
+            >
+              All
+            </button>
+          </div>
+
           <br />
 
           <div className="  w-[430px] space-y-4 my-3">
